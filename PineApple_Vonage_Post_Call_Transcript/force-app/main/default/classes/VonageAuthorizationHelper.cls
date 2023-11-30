@@ -7,14 +7,13 @@ public class VonageAuthorizationHelper {
     private static final String VONAGE_API_KEY = '6d32af05';
     private static final String VONAGE_API_SECRET = 'iGW2pRcmefNf1shT';
 
-    // Method to initiate phone number verification
     @AuraEnabled(cacheable=true)
-    public static void initiateVerification(String phoneNumber) {
+    public static String initiateVerification(String phoneNumber) {
         System.debug('TEST: initiateVerification' + phoneNumber);
         if (String.isblank(phoneNumber)) {
-            return;
+            return null;
         }
-        // 
+
         String verificationCode = generateRandomCode();
         String body = '{"brand" : "PineApple INC", "code": "' + verificationCode + '", "workflow": [{"channel": "voice","to": "' + phoneNumber + '"}, {"channel": "email","to": "adamredlinski@gmail.com"}]}';
 
@@ -31,17 +30,21 @@ public class VonageAuthorizationHelper {
         HttpResponse response = new Http().send(request);
         System.debug('TEST: response' + response);
 
-        if (response.getStatusCode() == 200) {
-            System.debug('Verification initiated successfully. Code: ' + verificationCode);
+        if (response.getStatusCode() == 202) {
+            System.debug('TEST: response' + response);
+
+            Map<String, Object> results = (Map<String, Object>)JSON.deserializeUntyped(response.getBody());
+            return (String) results.get('request_id');
         } else {
             System.debug('Verification initiation failed. Response: ' + response.getBody());
+            return null;
         }
     }
 
         @AuraEnabled(cacheable=true)
-        public static void checkVerificationCallStatus(String requestId, String providedCode) {
+        public static String checkVerificationCallStatus(String requestId, String providedCode) {
             if (String.isBlank(requestId) || String.isBlank(providedCode)) {
-                return;
+                return 'Missing parameters. Provided code: ' + providedCode + ' requestId ' + requestId;
             }
             
             String body = '{"code" : "' + providedCode + '"}';
@@ -59,15 +62,20 @@ public class VonageAuthorizationHelper {
             HttpResponse response = new Http().send(request);
             System.debug('TEST: response' + response);
     
-            if (response.getStatusCode() == 200) {
+            if (response.getStatusCode() == 202) {
                 System.debug('Verification  successfull');
+                return 'Success';
             } else {
                 System.debug('Verification failed. Response: ' + response.getBody());
-            }
+                Map<String, Object> results = (Map<String, Object>)JSON.deserializeUntyped(response.getBody());
+                System.debug('TEST: results' + results);
+
+            return (String) results.get('status');            }
         }
 
     private static String generateRandomCode() {
         Integer randomCode = Integer.valueOf(Math.floor(Math.random() * 9000) + 1000);
         return String.valueOf(randomCode);
     }
+    
 }

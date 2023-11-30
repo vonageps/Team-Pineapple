@@ -1,12 +1,11 @@
-<!-- CommunityCaseComponentContainer.html -->
 <template>
     <div>
         <h1>Community Case Component Container</h1>
-        {isAuthorized}<template lwc:if={isAuthorized}>
+        <template lwc:if={isAuthorized}>
             <c-vonage-create-case user-id={userId}></c-vonage-create-case>
         </template>
         <template lwc:else> 
-            <c-vonage-authorization-component user-record={userRecord}></c-vonage-authorization-component>
+            <c-vonage-authorization-component user-record={userRecord} onsuccess = {handleSuccess}></c-vonage-authorization-component>
          </template>
         
     </div>
