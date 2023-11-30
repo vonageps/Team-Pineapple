@@ -92,4 +92,12 @@
         <name>VonageService</name>
         <type>ConnectedApp</type>
     </appMenuItems>
+    <appMenuItems>
+        <name>Customer Service</name>
+        <type>Network</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Vonage_Call_Center</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
 </AppMenu>

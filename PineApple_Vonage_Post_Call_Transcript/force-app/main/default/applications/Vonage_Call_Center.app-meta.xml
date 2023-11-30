@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#E434C1</headerColor>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <label>Vonage Call Center</label>
+    <navType>Standard</navType>
+    <tabs>standard-Case</tabs>
+    <tabs>standard-Contact</tabs>
+    <tabs>VonageCall__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>Vonage_Call_Center_UtilityBar</utilityBar>
+</CustomApplication>
