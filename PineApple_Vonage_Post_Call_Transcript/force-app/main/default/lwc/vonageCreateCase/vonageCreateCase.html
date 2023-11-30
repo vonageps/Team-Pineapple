@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="Create Case">
+        <div class="slds-p-around_medium">
+            <p>Welcome, {userName}!</p>
+            <lightning-input label="Subject" value={subject} onchange={handleSubjectChange}></lightning-input>
+            <lightning-textarea label="Description" value={description} onchange={handleDescriptionChange}></lightning-textarea>
+            <lightning-button label="Create Case" onclick={createCase}></lightning-button>
+        </div>
+    </lightning-card>
+</template>
