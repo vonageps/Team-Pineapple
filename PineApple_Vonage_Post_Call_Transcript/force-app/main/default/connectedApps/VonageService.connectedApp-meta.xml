@@ -4,10 +4,12 @@
     <contactPhone>+48605788749</contactPhone>
     <label>Vonage Service</label>
     <oauthConfig>
-        <callbackUrl>https://youriteams3-dev-ed.develop.lightning.force.com/</callbackUrl>
+        <callbackUrl>https://api-eu.vonage.com/oauth/redirect</callbackUrl>
         <consumerKey>3MVG98Gq2O8Po4Zmy3G6H5YjvvJdNRf33Q6Gxxr9eSsTPxiXgfDaqhVAw38PbnpQkXWMspEUlziaEjvoOSK.N</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <scopes>Api</scopes>
+        <scopes>Web</scopes>
         <scopes>Full</scopes>
+        <scopes>RefreshToken</scopes>
     </oauthConfig>
 </ConnectedApp>
