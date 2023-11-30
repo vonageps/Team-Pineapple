@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Urgent__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(VALUE(Evaluation__c) &gt;= 0.3 &amp;&amp; VALUE(Evaluation__c) &lt;= 1, &quot;https://htmlcolorcodes.com/assets/images/colors/neon-green-color-solid-background-1920x1080.png&quot;,
+IF(VALUE(Evaluation__c) &gt;= -0.3 &amp;&amp; VALUE(Evaluation__c) &lt; 0.3, &quot;https://htmlcolorcodes.com/assets/images/colors/lemon-yellow-color-solid-background-1920x1080.png&quot;,
+IF(VALUE(Evaluation__c) &gt;= -1 &amp;&amp; VALUE(Evaluation__c) &lt; -0.3, &quot;https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Red_Color.jpg/640px-Red_Color.jpg&quot;,&apos;&apos;)
+)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Urgent</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
