@@ -1,5 +1,8 @@
-@RestResource(urlMapping='/v1/VonageService/*')
-global with sharing class VonageWebService
+/**
+ * Created by Szymon on 01/12/2023.
+ */
+@RestResource(urlMapping='/v2/VonageService/*')
+global with sharing class WebService2
 {
     @HttpPost
     global static String doPost()
