@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_SMS_Summary</name>
+        <label>Send SMS Summary</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <actionName>VonageMessageApiIntegration</actionName>
+        <actionType>apex</actionType>
+        <inputParameters>
+            <name>callIds</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <interviewLabel>Vonage Send SMS Summary {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Vonage Send SMS Summary</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <startElementReference>Send_SMS_Summary</startElementReference>
+    <status>Active</status>
+</Flow>

@@ -3,22 +3,24 @@
  */
 
 public class vonageApiIntegration {
-    private static final String API_ENDPOINT = 'https://api.nexmo.com/v1/calls';
-    private static final String JWT_TOKEN = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBsaWNhdGlvbl9pZCI6IjVhNmZmMTc1LTA3ZGUtNDc2NS05MTdmLTIxMWYwMGY5ZjcyNiIsImlhdCI6MTcwMTM3NzkwMiwianRpIjoiZjYyNTUxZjEtZWUyYS00ZDUxLThmNWItNTA2NjE4NGUxMTU0IiwiZXhwIjoxNzAxMzc4ODAyfQ.gEWFxgCvAlYD4ioeNhVahRJkuBfcMPSk4FLZVevUZSrEt5OHpz2XsGFRUKad6mcrGzwHdX80K-gzo9gQVghcIc8QIDZQRlsMwnfJZS5f_9H0Xbv67oL2DD_zKmczwzqJ3N063Hy85fqIksquPnyNccQX0PvOKA6ZcMZKACPr6tiEMHrXu90MWGkAgT68E8QPjWLgth570mhMiZ5w8USw4ZNuHvs5NVw_I1erdoMc6gSJoMxKbxwgSEyrMzxvuM68HQqJRY2qrDksbfs-atz0lnbCw8hEeigP2WUxCCGAos9v9k1G1SBr3tCgJBotmwU5_MxWaLDdkWpYBmDvsjEeog';
+
+    //private static final String API_ENDPOINT = 'https://api.nexmo.com/v1/calls';
+    //private static final String JWT_TOKEN = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBsaWNhdGlvbl9pZCI6IjVhNmZmMTc1LTA3ZGUtNDc2NS05MTdmLTIxMWYwMGY5ZjcyNiIsImlhdCI6MTcwMTQyMTI2OSwianRpIjoiYTU2ZTcyYWItMDQzZS00MDlmLThkZTctYmI0NjlmMWI0NjhkIiwiZXhwIjoxNzAxNDIyMTY5fQ.hc9HdhTRV7wp16r0sW7C6rme1Ue0pLXpll0IrYBmfMgFh9Nv3CTblq_Jl306HtpUNfdl4plSE_Bag-cXOT31oTrinf5LtDHtpeY04nWM3HaHwC_WV1sy7nhKBXJC4nmOngRZuGFnxnaV7u37zQPAAYZHiOgeNHWOV-qWPWKlBW3DIRTY1NcywOBMn-BI_oGGvvMo0c8bEOXIyNafJgi8BQMQXzGzKK3_L01_LIsDujOeE8nwkM_AyW99FczfwWxd5d46EdNkfzUNeVbf0nrZd05s3BXQ3LFXTPlc_Ska_CANpEOHxTvfDyAHlJ1bJmAX-LKA9d2mPP38SafDxrZYFQ';
     private static final String FROM_NUMBER = '447441443825';  
     private static final String TO_NUMBER = '48577370998';  
 
 
     @AuraEnabled
     public static void makeOutboundCall(String phoneNumber,String caseNumber, String question) {
-        System.debug('JWT Token: ' + JWT_TOKEN);
-        System.debug('API Endpoint: ' + API_ENDPOINT);
+        Vonage_Integration_Data__mdt meta = VonageAuthorizationHelper.getVonageMainAppMetadataInfo();
+        System.debug('JWT Token: ' + meta.JWT_token__c);
+        System.debug('API Endpoint: ' + meta.Vonage_calls_API_endpoint__c);
     
         HttpRequest req = new HttpRequest();
-        req.setEndpoint(API_ENDPOINT);
+        req.setEndpoint(meta.Vonage_calls_API_endpoint__c);
         req.setMethod('POST');
         req.setHeader('Content-Type', 'application/json');
-        req.setHeader('Authorization', 'Bearer ' + JWT_TOKEN);
+        req.setHeader('Authorization', 'Bearer ' + meta.JWT_token__c);
     
         String ncco = '[ { "action": "talk", "text": "Hello!" }, { "action": "talk", "text": "'+ question +'", "bargeIn": true }, { "eventUrl": [ "https://webhook.site/e5c6076d-5ef1-449b-809d-3b6c3c408631"], "eventMethod": "POST", "action": "input", "type": [ "speech" ], "speech": { "language": "en-gb", "context": [ "support", "buy", "credit", "account" ], "endOnSilence": 0.5, "saveAudio": true, "sensitivity": "90" } } ]';
         String requestBody = '{"to": [{"type": "phone", "number": "' + phoneNumber + '"}], "from": {"type": "phone", "number": "' + FROM_NUMBER + '"}, "ncco": ' + ncco + '}';
@@ -46,11 +48,12 @@ public class vonageApiIntegration {
     }
 
     public static void getCallStatus(String callUUID) {
+        Vonage_Integration_Data__mdt meta = VonageAuthorizationHelper.getVonageMainAppMetadataInfo();
         HttpRequest req = new HttpRequest();
-        req.setEndpoint('https://api.nexmo.com/v1/calls/' + callUUID);
+        req.setEndpoint(meta.Vonage_calls_API_endpoint__c + callUUID);
         req.setMethod('GET');
         req.setHeader('Content-Type', 'application/json');
-        req.setHeader('Authorization', 'Bearer ' + JWT_TOKEN);
+        req.setHeader('Authorization', 'Bearer ' + meta.JWT_token__c);
     
         Http http = new Http();
         HttpResponse res = http.send(req);

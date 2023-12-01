@@ -5,8 +5,8 @@ public with sharing class VonageCaseController {
         Id accountId = currentUser.AccountId;
         Id contactId = currentUser.ContactId;
 
-        update new Contact(Id=contactId, Phone = currentUser.MobilePhone);
-        
+        String phoneCorrect = currentUser.MobilePhone.replace(' ','').replace('+','');
+        update new Contact(Id=contactId, Phone = phoneCorrect);
         Case newCase = new Case(
             Subject = subject,
             Description = description,

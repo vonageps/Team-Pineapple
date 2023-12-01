@@ -1,13 +1,12 @@
 public class vonageNaturalLanguageAPI {
-    private static String API_KEY = 'AIzaSyDbPWrRqsHEhedeLtkpcZZF6Yk08B-ldT8';  
-
     public class SentimentResult {
         public Double score { get; set; }
         public Double magnitude { get; set; }
     }
 
     public static SentimentResult analyzeSentiment(String text) {
-        String API_URL = 'https://language.googleapis.com/v1/documents:analyzeSentiment?key=' + API_KEY;
+        Vonage_Integration_Data__mdt meta = VonageAuthorizationHelper.getVonageMainAppMetadataInfo();
+        String API_URL = 'https://language.googleapis.com/v1/documents:analyzeSentiment?key=' + meta.Google_NL_Api_Key__c;
         String sentimentAnalysisResult = makeApiRequest(API_URL, text);
 
         if (sentimentAnalysisResult != null) {
