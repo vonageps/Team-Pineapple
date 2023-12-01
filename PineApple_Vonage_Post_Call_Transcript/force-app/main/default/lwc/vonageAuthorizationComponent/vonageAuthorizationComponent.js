@@ -3,6 +3,7 @@ import initiateVerification from '@salesforce/apex/VonageAuthorizationHelper.ini
 import checkVerificationCallStatus from '@salesforce/apex/VonageAuthorizationHelper.checkVerificationCallStatus';
 import USER_ID from '@salesforce/user/Id';
 import { getRecord } from 'lightning/uiRecordApi';
+import updateUser from '@salesforce/apex/VonageAuthorizationHelper.updateUser'; // Add the actual path to your updateUser method
 
 
 const FIELDS = ['User.MobilePhone'];
@@ -70,6 +71,7 @@ export default class AuthorizationComponent extends LightningElement {
                 console.log('TEST: result', result);
 
                 if (result === 'completed') {
+                    this.updateUser();
                     this.dispatchEvent(new CustomEvent('success', { detail: result.message }));
                 } else {
                     this.dispatchEvent(new CustomEvent('failure', { detail: result.message }));
@@ -77,6 +79,18 @@ export default class AuthorizationComponent extends LightningElement {
             })
             .catch(error => {
                 console.error('Error calling Apex method:', error);
+            });
+    }
+
+    updateUser() {
+        const userId = USER_ID;
+
+        updateUser({ passedId: userId })
+            .then(updateResult => {
+                console.log('User updated successfully:', updateResult);
+            })
+            .catch(updateError => {
+                console.error('Error updating user:', updateError);
             });
     }
 }

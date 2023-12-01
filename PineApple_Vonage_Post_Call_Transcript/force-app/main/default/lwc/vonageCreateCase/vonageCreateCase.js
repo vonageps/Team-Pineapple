@@ -26,10 +26,24 @@ export default class CreateCaseComponent extends LightningElement {
     createCase() {
          createVonageCase({ subject: this.subject, description: this.description, phoneNumber: this.phoneNumber })
          .then(result => {
-             this.successMessage = 'Vonage Case created successfully. Case Id: ' + result;
-         })
-         .catch(error => {
-             console.error('Error creating Vonage case:', error);
-         });
+            // Set success message
+            this.successMessage = 'Vonage Case created successfully. Case Id: ' + result;
+
+            // Navigate to the newly created Case record page
+            this[NavigationMixin.GenerateUrl]({
+                type: 'standard__recordPage',
+                attributes: {
+                    recordId: result, // Assumes that the Apex method returns the Case Id
+                    objectApiName: 'Case',
+                    actionName: 'view'
+                }
+            }).then(url => {
+                window.location.assign(url);
+            });
+        })
+        .catch(error => {
+            console.error('Error creating Vonage case:', error);
+            // Add logic to display an error message to the user if needed
+        });
     }
 }

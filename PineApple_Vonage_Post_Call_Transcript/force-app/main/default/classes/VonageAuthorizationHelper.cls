@@ -84,4 +84,13 @@ public class VonageAuthorizationHelper {
         Vonage_Integration_Data__mdt meta = [SELECT Id, DeveloperName, MasterLabel,  Api_Key__c, Vonage_Api_Secret__c, JWT_token__c, Verify_Endpoint__c, Sms_endpoint__c, Google_NL_Api_Key__c, Google_NL_Api_Endpoint__c, Vonage_calls_API_endpoint__c, Vonage_Conversation_API_endpoint__c FROM Vonage_Integration_Data__mdt WHERE DeveloperName = 'Vonage_Salesforce_Main_Application'];
         return meta;
     }
+
+    @AuraEnabled
+    public static void updateUser (String passedId) {
+        try {
+            update new User(Id = passedId, Is_authorized__c = true);
+        }  catch (DmlException ex) {
+            System.debug('Error updating user: ' + ex.getMessage());
+        }
+    }
 }
