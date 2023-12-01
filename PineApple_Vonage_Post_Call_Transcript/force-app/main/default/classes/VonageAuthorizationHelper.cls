@@ -93,4 +93,9 @@ public class VonageAuthorizationHelper {
             System.debug('Error updating user: ' + ex.getMessage());
         }
     }
+
+    @AuraEnabled(cacheable=true)
+    public static User fetchUserData () {
+        return [SELECT ID, Is_authorized__c FROM User WHERE ID =: UserInfo.getUserId()];
+    }
 }

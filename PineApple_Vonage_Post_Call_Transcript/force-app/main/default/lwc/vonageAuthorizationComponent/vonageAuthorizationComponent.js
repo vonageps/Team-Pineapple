@@ -9,13 +9,15 @@ import updateUser from '@salesforce/apex/VonageAuthorizationHelper.updateUser'; 
 const FIELDS = ['User.MobilePhone'];
 
 export default class AuthorizationComponent extends LightningElement {
-    @api userRecord;
+    @api isauthorized;
     @track verificationCode = '';
     phoneNumber;
     requestId;
 
     connectedCallback() {
-        this.startVerification(this.phoneNumber);
+        if (isauthorized) {
+            this.startVerification(this.phoneNumber);
+        }
     }
 
     @wire(getRecord, { recordId: USER_ID, fields: FIELDS })
