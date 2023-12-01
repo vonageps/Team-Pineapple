@@ -5,7 +5,8 @@ public with sharing class VonageCaseController {
         Id accountId = currentUser.AccountId;
         Id contactId = currentUser.ContactId;
 
-        update new Account(Id=contactId, Phone = currentUser.MobilePhone);
+        update new Contact(Id=contactId, Phone = currentUser.MobilePhone);
+        
         Case newCase = new Case(
             Subject = subject,
             Description = description,
