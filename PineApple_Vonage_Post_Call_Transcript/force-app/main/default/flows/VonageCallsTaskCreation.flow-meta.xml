@@ -27,12 +27,6 @@
         <locationX>176</locationX>
         <locationY>323</locationY>
         <inputAssignments>
-            <field>ActivityDate</field>
-            <value>
-                <elementReference>$System.OriginDateTime</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
             <field>Description</field>
             <value>
                 <elementReference>DescriptionTemplate</elementReference>
@@ -78,6 +72,6 @@
     </textTemplates>
     <textTemplates>
         <name>SubjectTemplate</name>
-        <text>&lt;p&gt;Customer call with bad feedback&lt;/p&gt;</text>
+        <text>Customer call with bad feedback</text>
     </textTemplates>
 </Flow>

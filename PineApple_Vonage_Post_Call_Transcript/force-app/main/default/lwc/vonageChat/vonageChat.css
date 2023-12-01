@@ -1,0 +1,35 @@
+.slds-card {
+    border: 1px solid #d8dde6;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.slds-card__header {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #d8dde6;
+    background-color: #f3f4f6;
+}
+
+.slds-text-heading_small {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.slds-card__body {
+    padding: 1rem;
+}
+
+.slds-card__footer {
+    padding: 1rem;
+    border-top: 1px solid #d8dde6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slds-textarea {
+    width: 70%;
+    resize: none;
+    margin-right: 8px;
+}

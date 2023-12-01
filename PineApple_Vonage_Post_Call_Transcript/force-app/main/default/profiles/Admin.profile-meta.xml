@@ -244,6 +244,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>VonageConversationApi</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>VonageMessageApiIntegration</apexClass>
         <enabled>true</enabled>
     </classAccesses>

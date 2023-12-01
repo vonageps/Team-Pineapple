@@ -1,0 +1,26 @@
+<template>
+    <div class="slds-card">
+        <div class="slds-card__header slds-grid">
+            <h3 class="slds-text-heading_small slds-grow">Chat</h3>
+        </div>
+        <div class="slds-card__body slds-card__body_inner">
+            <template if:true={showButton}>
+                <button class="slds-button slds-button_brand" onclick={startChat}>Start Chat with Bot</button>
+            </template>
+            <template if:true={showChat}>
+                <template if:true={conversationDetails}>
+                    <template for:each={messages} for:item="mess">
+                        <p key={mess.Id}>{mess.Name}</p>
+                    </template>
+                </template>
+                <template for:each={messages} for:item="message">
+                    <p key={message.id} class={message.sender}>
+                        Case Administrator: {message.text}
+                    </p>
+                </template>
+                <textarea class="slds-textarea" placeholder="Type your message..." value={newMessage} oninput={handleInputChange}></textarea>
+                <button class="slds-button slds-button_brand" onclick={sendMessage}>Send</button>
+            </template>
+        </div>
+    </div>
+</template>

@@ -239,6 +239,9 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <componentInstances>
+            <componentName>vonageChat</componentName>
+        </componentInstances>
+        <componentInstances>
             <componentInstanceProperties>
                 <name>showLegacyActivityComposer</name>
                 <value>false</value>
