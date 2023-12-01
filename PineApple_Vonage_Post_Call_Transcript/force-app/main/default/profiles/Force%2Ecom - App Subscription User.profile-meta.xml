@@ -228,11 +228,31 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>VonageCallSelector</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>VonageCaseController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>VonageCaseSelector</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>VonageMessageApiIntegration</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>VonageWebService</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>VonageWebServiceHelper</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>vonageApiIntegration</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <custom>false</custom>
@@ -264,6 +284,51 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>VonageCall__c.Urgent__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Vonage_Integration_Data__mdt.Api_Key__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Vonage_Integration_Data__mdt.Google_NL_Api_Endpoint__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Vonage_Integration_Data__mdt.Google_NL_Api_Key__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Vonage_Integration_Data__mdt.JWT_token__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Vonage_Integration_Data__mdt.Sms_endpoint__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Vonage_Integration_Data__mdt.Verify_Endpoint__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Vonage_Integration_Data__mdt.Vonage_Api_Secret__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Vonage_Integration_Data__mdt.Vonage_Conversation_API_endpoint__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Vonage_Integration_Data__mdt.Vonage_calls_API_endpoint__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <layoutAssignments>
@@ -623,6 +688,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>VonageCall__c-Vonage Call Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Vonage_Integration_Data__mdt-Vonage Integration Data Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Waitlist-%5F%5FMISSING LABEL%5F%5F PropertyFile - val Waitlist not found in section StandardLayouts</layout>

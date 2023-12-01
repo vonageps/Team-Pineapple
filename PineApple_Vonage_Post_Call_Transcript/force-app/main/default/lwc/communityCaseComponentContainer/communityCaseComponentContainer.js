@@ -12,7 +12,7 @@ export default class CommunityCaseComponentContainer extends LightningElement {
     @api userRecord;
     userId ;
     userName = USER_NAME_FIELD;
-    isAuthorized = true;
+    isAuthorized;
 
     @wire(CurrentPageReference) pageRef;
 

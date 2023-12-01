@@ -17,11 +17,12 @@ public class VonageAuthorizationHelper {
         String verificationCode = generateRandomCode();
         String body = '{"brand" : "PineApple INC", "code": "' + verificationCode + '", "workflow": [{"channel": "voice","to": "' + phoneNumber + '"}, {"channel": "email","to": "adamredlinski@gmail.com"}]}';
 
+        Vonage_Integration_Data__mdt meta = getVonageMainAppMetadataInfo();
         HttpRequest request = new HttpRequest();
-        request.setEndpoint(API_AUTHORIZATION_ENDPOINT);
+        request.setEndpoint(meta.Verify_Endpoint__c);
         request.setMethod('POST');
         request.setHeader('Content-Type', 'application/json');
-        request.setHeader('Authorization', 'Bearer ' + JWT_TOKEN);
+        request.setHeader('Authorization', 'Bearer ' + meta.JWT_token__c);
         request.setBody(body);
 
         System.debug('TEST: request' + request);
@@ -49,11 +50,12 @@ public class VonageAuthorizationHelper {
             
             String body = '{"code" : "' + providedCode + '"}';
     
+            Vonage_Integration_Data__mdt meta = getVonageMainAppMetadataInfo();
             HttpRequest request = new HttpRequest();
-            request.setEndpoint(API_AUTHORIZATION_ENDPOINT + '/' + requestId);
+            request.setEndpoint(meta.Verify_Endpoint__c + '/' + requestId);
             request.setMethod('POST');
             request.setHeader('Content-Type', 'application/json');
-            request.setHeader('Authorization', 'Bearer ' + JWT_TOKEN);
+            request.setHeader('Authorization', 'Bearer ' + meta.JWT_token__c);
             request.setBody(body);
     
             System.debug('TEST: request' + request);
@@ -78,4 +80,8 @@ public class VonageAuthorizationHelper {
         return String.valueOf(randomCode);
     }
     
+    public static Vonage_Integration_Data__mdt getVonageMainAppMetadataInfo() {
+        Vonage_Integration_Data__mdt meta = [SELECT Id, DeveloperName, MasterLabel,  Api_Key__c, Vonage_Api_Secret__c, JWT_token__c, Verify_Endpoint__c, Sms_endpoint__c, Google_NL_Api_Key__c, Google_NL_Api_Endpoint__c, Vonage_calls_API_endpoint__c, Vonage_Conversation_API_endpoint__c FROM Vonage_Integration_Data__mdt WHERE DeveloperName = 'Vonage_Salesforce_Main_Application'];
+        return meta;
+    }
 }

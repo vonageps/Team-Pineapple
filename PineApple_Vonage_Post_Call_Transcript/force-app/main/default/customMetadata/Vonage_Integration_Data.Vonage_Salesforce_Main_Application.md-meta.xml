@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Vonage Salesforce Main Application</label>
+    <protected>false</protected>
+    <values>
+        <field>Api_Key__c</field>
+        <value xsi:type="xsd:string">6d32af05</value>
+    </values>
+    <values>
+        <field>Google_NL_Api_Endpoint__c</field>
+        <value xsi:type="xsd:string">https://language.googleapis.com/v1/documents:analyzeSentiment?key=</value>
+    </values>
+    <values>
+        <field>Google_NL_Api_Key__c</field>
+        <value xsi:type="xsd:string">AIzaSyDbPWrRqsHEhedeLtkpcZZF6Yk08B-ldT8</value>
+    </values>
+    <values>
+        <field>JWT_token__c</field>
+        <value xsi:type="xsd:string">eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDEzNDI1ODcsImV4cCI6MTcwMTUxNTM4NywianRpIjoiRWQ5NEhUV2RKM1JEIiwiYXBwbGljYXRpb25faWQiOiIwNmU2MTQzYS1jN2YxLTRjMjYtOWMzNy1iNTgzM2RkNWRiYzUiLCJzdWIiOiIiLCJhY2wiOiIifQ.WtzNrFsEKktw92FkOjkGcUsgpgmfleUyVY6CeZSH33edIiPt2ytMIbKcMjjDpo7sW32iWUc2TCubt1D-vDA36Bhl_O7gkWdJH3qm4zMpKm1mEjgXyYuGFn5yCUlZ3WVnXMQ3yR_mxXG4JzHdG9ArHxHSOIQh5594dGcIz3ldEdzyp_uvg0K-uFZzEyQR5FPD_SgrmdJH3PE_h-JybsB2EZIfG9NgPhuRywNfQDD9TPQ2hraU-4rpD7Ll4fsP5l3QGzA4dxNTEydIrfnVR6YLHrt_ed0CmoNJIo7mi89NhUBOUZlaerJiSjNPojxL-jLxuXVRRTsJNxkUmeujGWYzKw</value>
+    </values>
+    <values>
+        <field>Sms_endpoint__c</field>
+        <value xsi:type="xsd:string">https://rest.nexmo.com/sms/json</value>
+    </values>
+    <values>
+        <field>Verify_Endpoint__c</field>
+        <value xsi:type="xsd:string">https://api.nexmo.com/v2/verify</value>
+    </values>
+    <values>
+        <field>Vonage_Api_Secret__c</field>
+        <value xsi:type="xsd:string">iGW2pRcmefNf1shT</value>
+    </values>
+    <values>
+        <field>Vonage_Conversation_API_endpoint__c</field>
+        <value xsi:type="xsd:string">https://api.nexmo.com/v0.3/conversations</value>
+    </values>
+    <values>
+        <field>Vonage_calls_API_endpoint__c</field>
+        <value xsi:type="xsd:string">https://api.nexmo.com/v1/calls</value>
+    </values>
+</CustomMetadata>
